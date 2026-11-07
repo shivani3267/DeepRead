@@ -1,0 +1,22 @@
+{
+  "name": "deepread-monorepo",
+  "version": "1.0.0",
+  "description": "DeepRead — AI-Powered Academic Document Assistant with Grounded Citations",
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,AI,CLIENT\" -c \"blue,green,magenta\" \"npm run start:server\" \"npm run start:ai\" \"npm run start:client\"",
+    "start:server": "npm --prefix server start",
+    "dev:server": "npm --prefix server run dev",
+    "start:client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "start:ai": "cd ai-service && .\\venv\\Scripts\\uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload",
+    "seed": "npm --prefix server run seed && node scripts/seed_documents.js",
+    "test:server": "npm --prefix server test",
+    "test:ai": "cd ai-service && .\\venv\\Scripts\\pytest",
+    "evaluate": "cd ai-service && .\\venv\\Scripts\\python ../evaluation/evaluate_rag.py",
+    "test": "npm run test:server && npm run test:ai",
+    "test:e2e": "node scripts/test_e2e.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.5"
+  }
+}
