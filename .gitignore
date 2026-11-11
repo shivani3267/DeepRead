@@ -18,6 +18,8 @@ build/
 # Private Document Storage & Ingestion Artifacts
 storage/documents/*.pdf
 !storage/documents/.gitkeep
+server/src/storage/documents/*.pdf
+storage/vector_store/
 storage/temp/*
 !storage/temp/.gitkeep
 
